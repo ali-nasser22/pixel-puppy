@@ -9,7 +9,7 @@ export default function Home(){
             <PageWrapper>
                <Container>
                     <Header/>
-                  <Main/>
+                    <Main/>
                </Container>
             </PageWrapper>
         </>

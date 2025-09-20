@@ -1,12 +1,8 @@
 import Image from "next/image";
+import {puppy} from "../data/puppies";
 
-type puppyInfo ={
-    name: string,
-    description: string,
-    image: string,
-    liked: boolean,
-}
-export default function PuppyCard({ name, description, image, liked }:puppyInfo) {
+
+export default function PuppyCard({name, vibe, imagePath, liked }:puppy) {
     return (
         <li className="overflow-clip rounded-lg bg-white shadow-md ring ring-black/5 hover:-translate-y-0.5 w-auto">
             <Image
@@ -14,13 +10,13 @@ export default function PuppyCard({ name, description, image, liked }:puppyInfo)
                 width={360}
                 className="aspect-square object-cover"
                 alt={name}
-                src={image}
+                src={imagePath}
             />
             <div className="gap flex items-center justify-between p-4 text-sm">
                 <div className="flex items-center gap-2">
                     <p className="font-semibold">{name}</p>
                     <span className="text-slate-300">·</span>
-                    <p className="text-slate-500">{description}</p>
+                    <p className="text-slate-500">{vibe}</p>
                 </div>
                 <button className="group">
                     <svg
