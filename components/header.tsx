@@ -14,7 +14,7 @@ export default function Header(){
                                 alt="DevPups"
                                 className="h-16 transition group-hover:scale-105 group-hover:-rotate-6 md:h-20 lg:h-24"
                             />
-                            <p className="text-lg font-semibold">Dev Pups</p>
+                            <p className="text-lg font-semibold">Pixel Pups</p>
                         </div>
                     </Link>
                     <div className="mt-6">
