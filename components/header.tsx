@@ -3,10 +3,8 @@ import Image from "next/image";
 
 export default function Header(){
     return (
-        <main className="min-h-dvh bg-gradient-to-b from-cyan-200 to-white to-[60vh]">
-            <div className="mx-auto max-w-5xl p-4 md:p-8">
-                <header>
-                    <Link href='/' className='grop'>
+        <header>
+                    <Link href='/' className='group'>
 
                         <div className="inline-flex items-center gap-4">
                             <Image
@@ -26,7 +24,5 @@ export default function Header(){
                         </p>
                     </div>
                 </header>
-            </div>
-            </main>
     )
 }
