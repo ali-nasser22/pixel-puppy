@@ -1,15 +1,13 @@
 'use client'
 import Image from "next/image";
 import {puppy} from "../data/puppies";
-import {useState} from "react";
 
 
-export default function PuppyCard({name, vibe, imagePath, liked }:puppy) {
-    const [isLiked,setIsLiked] = useState(liked)
+type PuppyCardProps = puppy & { onToggleLike: (id:number) => void };
 
-    const handleLike=()=>{
-        setIsLiked((l)=>!l);
-    }
+export default function PuppyCard({id, name, vibe, imagePath, liked, onToggleLike }:PuppyCardProps) {
+    const handleLike = () => onToggleLike(id);
+
     return (
         <li className="overflow-clip rounded-lg bg-white shadow-md ring ring-black/5 hover:-translate-y-0.5 w-auto">
             <Image
@@ -37,7 +35,7 @@ export default function PuppyCard({name, vibe, imagePath, liked }:puppy) {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         className={`lucide lucide-heart ${
-                            isLiked ? "fill-pink-500 stroke-none" : "stroke-slate-200 group-hover:stroke-slate-300"
+                            liked ? "fill-pink-500 stroke-none" : "stroke-slate-200 group-hover:stroke-slate-300"
                         }`}
                     >
                         <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />

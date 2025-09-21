@@ -1,6 +1,7 @@
-import Image from "next/image";
+import {puppy} from "../data/puppies";
+import FavPuppy from "./favPuppy";
 
-export default function SearchPuppies(){
+export default function SearchPuppies({puppies, onToggleLike}:{puppies:puppy[], onToggleLike:(id:number)=>void}){
     return (
         <div className="mt-24 grid gap-8 sm:grid-cols-2">
             {/* Search */}
@@ -56,60 +57,9 @@ export default function SearchPuppies(){
                     </svg>
                 </h2>
                 <ul className="mt-4 flex flex-wrap gap-4">
-                    <li className="relative flex items-center overflow-clip rounded-md bg-white shadow-sm ring ring-black/5 transition duration-100 starting:scale-0 starting:opacity-0">
-                        <Image
-                            height={360}
-                            width={360}
-                            alt="Chase"
-                            className="aspect-square w-8 object-cover"
-                            src="/images/2.jpg"
-                        />
-                        <p className="px-3 text-sm text-slate-800">Chase</p>
-                        <button className="group h-full border-l border-slate-100 px-2 hover:bg-slate-100">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={24}
-                                height={24}
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="lucide lucide-x size-4 stroke-slate-400 group-hover:stroke-red-400"
-                            >
-                                <path d="M18 6 6 18" />
-                                <path d="m6 6 12 12" />
-                            </svg>
-                        </button>
-                    </li>
-                    <li className="relative flex items-center overflow-clip rounded-md bg-white shadow-sm ring ring-black/5 transition duration-100 starting:scale-0 starting:opacity-0">
-                        <Image
-                            height={360}
-                            width={360}
-                            alt="Leia"
-                            className="aspect-square w-8 object-cover"
-                            src="/images/3.jpg"
-                        />
-                        <p className="px-3 text-sm text-slate-800">Leia</p>
-                        <button className="group h-full border-l border-slate-100 px-2 hover:bg-slate-100">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={24}
-                                height={24}
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="lucide lucide-x size-4 stroke-slate-400 group-hover:stroke-red-400"
-                            >
-                                <path d="M18 6 6 18" />
-                                <path d="m6 6 12 12" />
-                            </svg>
-                        </button>
-                    </li>
+                    {puppies.map((puppy)=>(
+                        <FavPuppy image={puppy.imagePath} name={puppy.name} key={puppy.id} onRemove={()=>onToggleLike(puppy.id)} />
+                    ))}
                 </ul>
             </div>
         </div>
