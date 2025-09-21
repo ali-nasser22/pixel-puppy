@@ -23,7 +23,7 @@ export default function Main(){
         <main>
                 <SearchPuppies puppies={favPuppies} onToggleLike={toggleLike} handleSearchTerm={setSearchTerm} searchTerm={searchTerm} />
                 <PuppiesList puppies={filteredPuppies} onToggleLike={toggleLike} />
-               <PuppyForm/>
+               <PuppyForm addPuppies={setPuppies}/>
         </main>
     )
 }

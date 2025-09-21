@@ -16,6 +16,7 @@ export default function PuppyCard({id, name, vibe, imagePath, liked, onToggleLik
                 className="aspect-square object-cover"
                 alt={name}
                 src={imagePath}
+                unoptimized
             />
             <div className="gap flex items-center justify-between p-4 text-sm">
                 <div className="flex items-center gap-2">
