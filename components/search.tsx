@@ -1,7 +1,14 @@
 import {puppy} from "../data/puppies";
 import FavPuppy from "./favPuppy";
+import {Dispatch, SetStateAction} from "react";
 
-export default function SearchPuppies({puppies, onToggleLike}:{puppies:puppy[], onToggleLike:(id:number)=>void}){
+
+export default function SearchPuppies({puppies, onToggleLike, handleSearchTerm, searchTerm}: {
+    puppies: puppy[],
+    onToggleLike: (id: number) => void,
+    handleSearchTerm: Dispatch<SetStateAction<string>>,
+    searchTerm: string
+}){
     return (
         <div className="mt-24 grid gap-8 sm:grid-cols-2">
             {/* Search */}
@@ -13,11 +20,13 @@ export default function SearchPuppies({puppies, onToggleLike}:{puppies:puppy[], 
                     <input
                         placeholder="playful..."
                         name="search"
+                        value={searchTerm}
+                        onChange={(e)=>handleSearchTerm(e.target.value)}
                         id="search"
                         type="text"
                         className="w-full max-w-80 bg-white px-4 py-2 ring ring-black/5 focus:ring-2 focus:ring-cyan-500 focus:outline-none"
                     />
-                    <button className="inline-block rounded bg-cyan-300 px-4 py-2 !pr-3 !pl-2.5 font-medium text-cyan-900 hover:bg-cyan-200 focus:ring-2 focus:ring-cyan-500 focus:outline-none">
+                    <button type="button" onClick={() => handleSearchTerm("")} className="inline-block rounded bg-cyan-300 px-4 py-2 !pr-3 !pl-2.5 font-medium text-cyan-900 hover:bg-cyan-200 focus:ring-2 focus:ring-cyan-500 focus:outline-none" aria-label="Clear search">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width={24}
